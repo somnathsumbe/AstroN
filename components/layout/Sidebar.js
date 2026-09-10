@@ -32,6 +32,7 @@ const menus = [
     title: 'Market Analysis',
     items: [
       ['Degree Calculator', '/degree-calculator'],
+      ['Stock Gann Pressure', '/stock-gann-pressure-calc'],
       ['Planet-Stock Mapping', '/planet-stock-mapping'],
       ['Jupiter Venus Tracking', '/jupiter-venus-tracking'],
     ],

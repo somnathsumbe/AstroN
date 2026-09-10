@@ -26,6 +26,148 @@ a { color: inherit; }
 .purnima-location { margin-top: 9px; }.purnima-badge { margin-left: 8px; padding: 2px 5px; font-size: 8px; }.marathi-rules li { line-height: 1.7; }
 .degree-calculator { padding-bottom: 14px; }.calculator-meta { display: flex; align-items: center; gap: 18px; color: #698399; font: 10px 'DM Mono', monospace; margin-top: 17px; }.calculator-meta i { color: var(--gold); margin-right: 5px; }.calculator-meta .subtle-action { margin-left: auto; padding: 5px 9px; }.calculator-error { color: #f3a0a0; background: rgba(185, 74, 74, .12); border: 1px solid rgba(185, 74, 74, .3); font-size: 11px; padding: 9px 11px; margin-top: 14px; }.calculator-error i { margin-right: 6px; }.month-navigation { display: flex; align-items: center; gap: 7px; }.month-navigation button { background: transparent; color: #8ca5b7; border: 1px solid var(--line); padding: 7px 10px; }.month-navigation button:hover { color: var(--gold); border-color: var(--gold); }.month-navigation select { background: #081b2c; color: #dbe7ee; border: 1px solid var(--line); padding: 8px 10px; font: 10px 'DM Mono', monospace; }.weekend-row { background: rgba(232, 143, 91, .07); }.status-badge { display: inline-block; padding: 4px 7px; font: 9px 'DM Mono', monospace; letter-spacing: .04em; }.trading-status { color: var(--green); background: rgba(75, 212, 155, .1); }.weekend-status { color: #f0a36f; background: rgba(240, 163, 111, .12); }.active-action { color: var(--gold); border-color: var(--gold); }.gann-panel { margin-top: 18px; }.degree-toast { display: flex; align-items: flex-start; gap: 10px; border-color: var(--gold); color: #dce8ef; min-width: 290px; }.degree-toast > i { color: var(--gold); font-size: 18px; }.degree-toast div { display: flex; flex-direction: column; gap: 5px; }.degree-toast strong { color: var(--gold); font-size: 12px; }.degree-toast span { color: #a9bbc9; font-size: 11px; }.degree-toast button { margin-left: auto; background: transparent; border: 0; color: #7890a6; }.degree-steps { counter-reset: step; }.degree-steps li { padding-left: 4px; }
 html[data-theme] .month-navigation select { background: var(--astro-panel); color: var(--astro-contrast); border-color: var(--line); }
+
+.planet-mapping-page { min-width: 0; max-width: 100%; padding-bottom: 92px; overflow-x: hidden; }
+.planet-tabs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-bottom: 18px; }
+.planet-tab { display: flex; align-items: center; justify-content: center; gap: 7px; min-height: 48px; padding: 8px; color: var(--muted); background: transparent; border: 1px solid var(--line); font-size: 11px; cursor: pointer; transition: .2s ease; }
+.planet-tab:hover, .planet-tab:focus-visible { color: var(--astro-contrast, var(--white)); border-color: var(--astro-accent, var(--gold)); outline: 0; }
+.planet-tab.selected { color: #101820; background: var(--astro-accent, var(--gold)); border-color: var(--astro-accent, var(--gold)); font-weight: 700; }
+.planet-icon { font-size: 18px; line-height: 1; }
+.mapping-filters { margin-bottom: 18px; }
+.mapping-info-card { display: grid; grid-template-columns: 1fr auto auto; align-items: center; gap: 28px; margin-bottom: 18px; padding: 21px 24px; border: 1px solid color-mix(in srgb, var(--astro-accent, var(--gold)) 30%, var(--line)); border-left: 3px solid var(--astro-accent, var(--gold)); background: linear-gradient(125deg, color-mix(in srgb, var(--astro-panel, #0f2238) 92%, var(--astro-accent, var(--gold)) 8%), var(--astro-panel, #0f2238)); }
+.mapping-planet-identity { display: flex; align-items: center; gap: 14px; min-width: 0; }
+.mapping-planet-icon { display: grid; place-items: center; width: 50px; height: 50px; flex: 0 0 50px; border: 1px solid color-mix(in srgb, var(--astro-accent, var(--gold)) 35%, var(--line)); background: color-mix(in srgb, var(--astro-accent, var(--gold)) 10%, transparent); font-size: 25px; }
+.mapping-planet-identity h2 { margin: 5px 0 3px; font-size: 20px; }
+.mapping-planet-identity p { margin: 0; color: var(--muted); font-size: 11px; }
+.mapping-stat { min-width: 90px; padding-left: 22px; border-left: 1px solid var(--line); }
+.mapping-stat strong, .mapping-stat span { display: block; }
+.mapping-stat strong { color: var(--astro-accent, var(--gold)); font-size: 23px; }
+.mapping-stat span { color: var(--muted); font: 9px 'DM Mono', monospace; text-transform: uppercase; letter-spacing: .08em; }
+.sector-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.sector-card { min-width: 0; border: 1px solid var(--line); background: linear-gradient(145deg, color-mix(in srgb, var(--astro-panel, #0f2238) 97%, white 3%), var(--astro-panel, #0f2238)); }
+.sector-card-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; padding: 17px 18px 13px; border-bottom: 1px solid var(--line); }
+.sector-kicker { color: var(--astro-accent, var(--gold)); font: 9px 'DM Mono', monospace; letter-spacing: .13em; }
+.sector-card h2 { margin: 6px 0 0; color: var(--astro-contrast, var(--white)); font-size: 15px; }
+.sector-actions { display: flex; align-items: flex-end; flex-direction: column; gap: 7px; color: var(--muted); font: 9px 'DM Mono', monospace; white-space: nowrap; }
+.select-sector-button { padding: 0; color: var(--astro-accent, var(--gold)); border: 0; background: transparent; font: 10px 'DM Mono', monospace; cursor: pointer; }
+.select-sector-button:hover, .select-sector-button:focus-visible { text-decoration: underline; outline: 0; }
+.stock-list { padding: 0 18px; }
+.stock-item { display: flex; align-items: center; gap: 9px; min-width: 0; padding: 12px 0; border-bottom: 1px solid var(--line); cursor: pointer; transition: .18s ease; }
+.stock-item:last-child { border-bottom: 0; }
+.stock-item:hover, .stock-item.is-selected { padding-left: 7px; padding-right: 7px; background: color-mix(in srgb, var(--astro-accent, var(--gold)) 8%, transparent); }
+.stock-item input { position: absolute; opacity: 0; pointer-events: none; }
+.stock-check { color: var(--muted); font-size: 17px; line-height: 1; }
+.stock-item.is-selected .stock-check { color: var(--astro-success, var(--green)); }
+.stock-copy { display: flex; flex-direction: column; flex: 1; min-width: 0; }
+.stock-copy strong { overflow: hidden; color: var(--astro-contrast, var(--white)); font-size: 12px; text-overflow: ellipsis; white-space: nowrap; }
+.stock-copy small { color: var(--muted); font: 10px 'DM Mono', monospace; margin-top: 3px; }
+.exchange-badge { padding: 4px 6px; color: var(--astro-accent, var(--gold)); background: color-mix(in srgb, var(--astro-accent, var(--gold)) 10%, transparent); border: 1px solid color-mix(in srgb, var(--astro-accent, var(--gold)) 25%, var(--line)); font: 9px 'DM Mono', monospace; }
+.sector-card-footer { padding: 10px 18px; color: var(--muted); border-top: 1px solid var(--line); font: 9px 'DM Mono', monospace; }
+.mapping-empty { display: flex; align-items: center; flex-direction: column; gap: 8px; padding: 46px 20px; text-align: center; }
+.mapping-empty > i { color: var(--astro-accent, var(--gold)); font-size: 24px; }
+.mapping-empty h2 { margin: 0; font-size: 17px; }
+.mapping-empty p { margin: 0 0 8px; color: var(--muted); font-size: 12px; }
+.mapping-loading { min-height: 150px; }
+.selection-bar { position: fixed; z-index: 800; right: 24px; bottom: 20px; left: 269px; display: flex; align-items: center; justify-content: space-between; gap: 15px; padding: 12px 16px; color: var(--astro-contrast, var(--white)); border: 1px solid color-mix(in srgb, var(--astro-accent, var(--gold)) 30%, var(--line)); background: color-mix(in srgb, var(--astro-panel, #0f2238) 94%, black 6%); box-shadow: 0 12px 35px rgba(0,0,0,.3); }
+.selection-bar > div:first-child { display: flex; align-items: center; gap: 9px; font-size: 12px; }
+.selection-bar > div:first-child i { color: var(--astro-accent, var(--gold)); font-size: 17px; }
+.selection-actions { display: flex; gap: 8px; }
+.selection-actions button { min-height: 36px; }
+.mapping-toast { right: 25px; bottom: 88px; display: flex; align-items: center; gap: 10px; min-width: 280px; }
+.mapping-toast > i { color: var(--astro-accent, var(--gold)); }
+.mapping-toast > span { flex: 1; }
+.mapping-toast button { color: var(--muted); border: 0; background: transparent; }
+
+@media (min-width: 576px) { .planet-tabs { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+@media (min-width: 1200px) { .planet-tabs { grid-template-columns: repeat(9, minmax(0, 1fr)); } }
+@media (max-width: 767.98px) {
+	.mapping-info-card { grid-template-columns: 1fr 1fr; gap: 16px; padding: 18px; }
+	.mapping-planet-identity { grid-column: 1 / -1; }
+	.mapping-stat { padding-left: 0; border-left: 0; }
+	.selection-bar { right: 12px; bottom: 12px; left: 12px; align-items: stretch; flex-direction: column; gap: 10px; }
+	.selection-actions { display: grid; grid-template-columns: 1fr 1fr; }
+	.mapping-toast { right: 12px; bottom: 132px; left: 12px; min-width: 0; }
+}
+@media print { .planet-mapping-page { padding-bottom: 0; }.planet-tabs, .mapping-filters, .selection-bar, .mapping-toast { display: none !important; }.sector-grid { grid-template-columns: repeat(2, 1fr); }.sector-card { break-inside: avoid; } }
+
+.sun-jupiter-page { min-width: 0; max-width: 100%; overflow-x: hidden; }
+.sun-jupiter-page .table-responsive { max-width: 100%; overflow-x: auto; }
+.sun-jupiter-page .analysis-table { table-layout: auto; }
+
+@media (max-width: 767.98px) {
+	.sun-jupiter-page .table-responsive { overflow-x: visible; }
+	.sun-jupiter-page .sun-jupiter-events-table,
+	.sun-jupiter-page .sun-jupiter-events-table tbody,
+	.sun-jupiter-page .sun-jupiter-events-table tr,
+	.sun-jupiter-page .sun-jupiter-events-table td,
+	.sun-jupiter-page .sun-jupiter-observation-table,
+	.sun-jupiter-page .sun-jupiter-observation-table tbody,
+	.sun-jupiter-page .sun-jupiter-observation-table tr,
+	.sun-jupiter-page .sun-jupiter-observation-table td { display: block; width: 100%; }
+	.sun-jupiter-page .sun-jupiter-events-table thead,
+	.sun-jupiter-page .sun-jupiter-observation-table thead { display: none; }
+	.sun-jupiter-page .sun-jupiter-events-table tr,
+	.sun-jupiter-page .sun-jupiter-observation-table tr { margin-bottom: 12px; padding: 8px 12px; border: 1px solid var(--line); background: color-mix(in srgb, var(--astro-panel, #0f2238) 88%, transparent); }
+	.sun-jupiter-page .sun-jupiter-events-table td,
+	.sun-jupiter-page .sun-jupiter-observation-table td { display: grid; grid-template-columns: minmax(105px, 42%) 1fr; gap: 8px; align-items: center; min-height: 34px; padding: 7px 0; border: 0; white-space: normal; overflow-wrap: anywhere; }
+	.sun-jupiter-page .sun-jupiter-events-table td::before,
+	.sun-jupiter-page .sun-jupiter-observation-table td::before { content: attr(data-label); color: var(--muted); font: 9px 'DM Mono', monospace; letter-spacing: .06em; text-transform: uppercase; }
+	.sun-jupiter-page .sun-jupiter-events-table td:first-child { display: none; }
+	.sun-jupiter-page .sun-jupiter-events-table .status-badge { width: fit-content; }
+	.sun-jupiter-page .sun-jupiter-events-table .view-button { justify-self: start; }
+	.sun-jupiter-page .sun-jupiter-observation-table td { font-size: 11px; }
+}
+
+.stock-gann-page { min-width: 0; max-width: 100%; overflow-x: hidden; }
+.stock-gann-form h2 { color: var(--astro-contrast, var(--white)); font-size: 15px; margin: 0 0 15px; }
+.gann-zero-section, .stock-reference-section, .calculation-base, .angles-section { border: 1px solid var(--line); padding: 17px; margin-bottom: 18px; background: color-mix(in srgb, var(--astro-panel, #0f2238) 76%, transparent); }
+.gann-zero-section { border-left: 3px solid var(--astro-accent, var(--gold)); background: color-mix(in srgb, var(--astro-accent, var(--gold)) 7%, var(--astro-panel, #0f2238)); }
+.calculation-base legend, .angles-section legend { float: none; width: auto; color: var(--astro-accent, var(--gold)); font: 10px 'DM Mono', monospace; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 12px; }
+.radio-option, .angle-select-all { display: flex; align-items: center; gap: 8px; min-height: 40px; color: var(--astro-contrast, var(--white)); font-size: 12px; cursor: pointer; }
+.radio-option input, .angle-select-all input, .angle-option input { accent-color: var(--astro-accent, var(--gold)); }
+.angle-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; color: var(--muted); font: 10px 'DM Mono', monospace; margin-bottom: 12px; }
+.angle-grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 8px; }
+.angle-option { display: flex; align-items: center; justify-content: center; gap: 5px; min-height: 38px; padding: 5px 7px; color: var(--muted); border: 1px solid var(--line); font: 11px 'DM Mono', monospace; cursor: pointer; transition: .2s ease; }
+.angle-option:hover, .angle-option.selected { color: var(--astro-contrast, var(--white)); border-color: var(--astro-accent, var(--gold)); background: color-mix(in srgb, var(--astro-accent, var(--gold)) 12%, transparent); }
+.angle-option.important-angle { border-left: 2px solid #e97979; }
+.angle-option.important-angle.selected { color: #ffb0a9; }
+.calculate-gann-button { width: 100%; min-height: 44px; margin-top: 2px; }
+.calculation-summary { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; margin-bottom: 19px; border: 1px solid var(--line); background: var(--line); }
+.calculation-summary div { min-width: 0; padding: 14px; background: var(--astro-panel, #0f2238); }
+.calculation-summary strong, .calculation-summary span { display: block; }
+.calculation-summary strong { color: var(--astro-accent, var(--gold)); font-size: 11px; margin-bottom: 7px; }
+.calculation-summary span { color: var(--muted); font-size: 10px; line-height: 1.5; }
+.gann-results .data-panel-heading { align-items: center; }
+.priority-important { color: #ffaaa5; background: rgba(220, 53, 69, .15); border: 1px solid rgba(220, 53, 69, .35); }
+.priority-secondary { color: #f0c36d; background: rgba(240, 180, 80, .12); border: 1px solid rgba(240, 180, 80, .25); }
+.gann-pressure-table tbody tr.important-result td { background: color-mix(in srgb, #b94242 8%, transparent); }
+.gann-pressure-table tbody tr.secondary-result td { background: color-mix(in srgb, #d49a3d 4%, transparent); }
+.gann-observation { margin-top: 18px; }
+.gann-usage-modal { max-height: min(720px, calc(100vh - 32px)); display: flex; flex-direction: column; }
+.gann-modal-body { overflow-y: auto; padding-right: 6px; }
+.modal-footer-actions { display: flex; justify-content: flex-end; padding-top: 15px; margin-top: 15px; border-top: 1px solid var(--line); }
+
+@media (max-width: 991.98px) {
+	.angle-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+	.calculation-summary { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 767.98px) {
+	.angle-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+	.angle-toolbar { align-items: flex-start; flex-direction: column; }
+	.calculation-summary { grid-template-columns: 1fr; }
+	.calculation-summary div { padding: 12px 14px; }
+	.stock-gann-page .gann-results .data-panel-heading { display: block; }
+	.stock-gann-page .gann-results .month-navigation { margin-top: 15px; }
+	.stock-gann-page .gann-pressure-table,
+	.stock-gann-page .gann-pressure-table tbody,
+	.stock-gann-page .gann-pressure-table tr,
+	.stock-gann-page .gann-pressure-table td { display: block; width: 100%; }
+	.stock-gann-page .gann-pressure-table thead { display: none; }
+	.stock-gann-page .gann-pressure-table tr { margin-bottom: 12px; padding: 8px 12px; border: 1px solid var(--line); }
+	.stock-gann-page .gann-pressure-table td { display: grid; grid-template-columns: minmax(105px, 42%) 1fr; gap: 8px; align-items: center; min-height: 34px; padding: 7px 0; border: 0; white-space: normal; overflow-wrap: anywhere; }
+	.stock-gann-page .gann-pressure-table td::before { content: attr(data-label); color: var(--muted); font: 9px 'DM Mono', monospace; letter-spacing: .06em; text-transform: uppercase; }
+}
 html[data-theme] .status-badge.trading-status { color: var(--astro-success); }
 @media (max-width: 767.98px) { .calculator-meta { display: grid; gap: 8px; }.calculator-meta .subtle-action { margin-left: 0; width: fit-content; }.month-navigation { margin-top: 16px; justify-content: flex-start; }.month-navigation select { flex: 1; }.degree-toast { right: 12px; left: 12px; bottom: 15px; min-width: 0; } }
 .bhadra-location { margin-top: 9px; }.bhadra-filter-actions { justify-content: flex-start; margin-top: 0; }.bhadra-table td, .bhadra-table th { vertical-align: middle; }.weekend-cell { display: inline-flex; flex-direction: column; gap: 3px; background: #dc3545; color: #fff; padding: 4px 6px; }.weekend-cell small, .trading-time-cell small { display: block; font: 8px 'DM Mono', monospace; letter-spacing: .04em; }.trading-time-cell { display: inline-flex; flex-direction: column; gap: 3px; color: #795400; background: #ffe69c; padding: 4px 6px; }.backtest-note { color: var(--muted); font-size: 11px; margin: -5px 0 17px; }.bhadra-backtest { margin-top: 18px; }

@@ -22,3 +22,33 @@ export function dateKey(value: string): number {
 export function isWeekend(day: string): boolean {
   return day === 'Saturday' || day === 'Sunday';
 }
+
+function utcDate(value: string): Date {
+  const [year, month, day] = value.split('-').map(Number);
+  return new Date(Date.UTC(year, month - 1, day));
+}
+
+export function toIsoDate(value: Date): string {
+  return `${value.getUTCFullYear()}-${String(value.getUTCMonth() + 1).padStart(2, '0')}-${String(value.getUTCDate()).padStart(2, '0')}`;
+}
+
+export function getNextMonday(value: string): string {
+  const date = utcDate(value);
+  const day = date.getUTCDay();
+  if (day === 6) date.setUTCDate(date.getUTCDate() + 2);
+  if (day === 0) date.setUTCDate(date.getUTCDate() + 1);
+  return toIsoDate(date);
+}
+
+export function getWeekMonday(value: string): string {
+  const date = utcDate(value);
+  const day = date.getUTCDay();
+  date.setUTCDate(date.getUTCDate() - (day === 0 ? 6 : day - 1));
+  return toIsoDate(date);
+}
+
+export function getWeekFriday(value: string): string {
+  const date = utcDate(getWeekMonday(value));
+  date.setUTCDate(date.getUTCDate() + 4);
+  return toIsoDate(date);
+}
