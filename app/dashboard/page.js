@@ -7,6 +7,7 @@ import { getRegisteredAstroEvents, registerAstroEvents } from '@/lib/event-regis
 import TodayAstroEvents from '@/components/astrology/TodayAstroEvents';
 import UpcomingAstroEvents from '@/components/astrology/UpcomingAstroEvents';
 import AstroEventSummary from '@/components/astrology/AstroEventSummary';
+import AstroEventOverview from '@/components/astrology/AstroEventOverview';
 
 function formatToday(date) {
   return new Intl.DateTimeFormat('en-IN', { day: '2-digit', month: 'long', year: 'numeric', timeZone: 'Asia/Kolkata' }).format(date);
@@ -31,6 +32,6 @@ export default function DashboardPage() {
   const todayKey = now ? getIndianDateKey(now) : '';
 
   return (
-    <div className="dashboard-page astro-dashboard"><div className="dashboard-welcome"><div><div className="eyebrow">ASTROLOGY × MARKET OBSERVATION</div><h1 className="page-title">Astro Market Analytics</h1><p className="page-subtitle">Astrology-based calendar &amp; market observation</p></div><div className="dashboard-date"><i className="bi bi-calendar3" /> {now ? formatToday(now) : 'Loading date'}<small>India · Asia/Kolkata</small></div></div><TodayAstroEvents events={todayEvents} dateLabel={todayKey ? formatToday(now) : 'Loading'} /><AstroEventSummary events={todayEvents} /><UpcomingAstroEvents events={upcomingEvents} /></div>
+    <div className="dashboard-page astro-dashboard"><div className="dashboard-welcome"><div><div className="eyebrow">ASTROLOGY × MARKET OBSERVATION</div><h1 className="page-title">Astro Market Analytics</h1><p className="page-subtitle">Astrology-based calendar &amp; market observation</p></div><div className="dashboard-date"><i className="bi bi-calendar3" /> {now ? formatToday(now) : 'Loading date'}<small>India · Asia/Kolkata</small></div></div><TodayAstroEvents events={todayEvents} dateLabel={todayKey ? formatToday(now) : 'Loading'} /><AstroEventSummary events={todayEvents} />{now ? <AstroEventOverview events={allEvents} now={now} /> : <div className="astro-overview-loading" aria-label="Loading Astro events"><span className="spinner-border spinner-border-sm" /> Loading Astro Events &amp; Notifications...</div>}<UpcomingAstroEvents events={upcomingEvents} /></div>
   );
 }
