@@ -39,7 +39,7 @@ export default function LoginPage() {
       } else {
         window.localStorage.removeItem('astro_remember_login');
       }
-      router.replace('/amavasya');
+      router.replace('/dashboard');
     }, 450);
   }
 

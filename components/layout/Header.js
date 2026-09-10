@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { getLoggedUser, logout } from '@/lib/auth';
 import ThemeSwitcher from '@/components/layout/ThemeSwitcher';
 
@@ -21,10 +22,10 @@ export default function Header() {
 
   return (
     <header className="site-header">
-      <a className="brand-mark" href="/dashboard" aria-label="Astro Market Analytics home">
+      <Link className="brand-mark" href="/dashboard" aria-label="Astro Market Analytics home">
         <span className="brand-star">✦</span>
         <span><strong>ASTRO</strong><small>MARKET ANALYTICS</small></span>
-      </a>
+      </Link>
       <button className="mobile-menu-button d-md-none" type="button" onClick={() => window.dispatchEvent(new Event('astro:toggle-sidebar'))} aria-label="Toggle navigation"><i className="bi bi-list" /></button>
       <div className="header-context d-none d-md-flex">
         <span className="market-pill">NSE</span><span className="market-divider">|</span><span className="market-pill">BSE</span>

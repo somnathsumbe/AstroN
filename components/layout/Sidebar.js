@@ -2,10 +2,12 @@
 
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
+import Link from 'next/link';
 
 const menus = [
   {
-    title: 'Lunar',
+    title: 'Lunar & Calendar',
+    icon: 'bi-calendar3',
     items: [
       ['Amavasya', '/amavasya'],
       ['Purnima', '/purnima'],
@@ -13,36 +15,44 @@ const menus = [
   },
   {
     title: 'Bhadra',
+    icon: 'bi-exclamation-triangle',
     items: [
       ['Bhadra Kaal', '/bhadra-kaal'],
     ],
   },
   {
-    title: 'Planetary',
+    title: 'Planetary Analysis',
+    icon: 'bi-stars',
     items: [
       ['Mangal Gochar', '/mangal-gochar'],
-      ['March Equinox', '/march-equinox'],
       ['Panchak', '/panchak'],
       ['Pushya Nakshatra', '/pushya-nakshatra'],
       ['Shukra Gochar', '/shukra-gochar'],
       ['Sun-Jupiter Tracking', '/sun-jupiter-tracking'],
+      ['Jupiter Venus Tracking', '/jupiter-venus-tracking'],
     ],
   },
   {
     title: 'Market Analysis',
+    icon: 'bi-graph-up-arrow',
     items: [
       ['Degree Calculator', '/degree-calculator'],
       ['Stock Gann Pressure', '/stock-gann-pressure-calc'],
       ['Planet-Stock Mapping', '/planet-stock-mapping'],
-      ['Jupiter Venus Tracking', '/jupiter-venus-tracking'],
     ],
   },
 ];
 
+function sectionForPath(pathname) {
+  return menus.find((section) => section.items.some(([, href]) => href === pathname))?.title || null;
+}
+
 export default function Sidebar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const [expandedSections, setExpandedSections] = useState(() => Object.fromEntries(menus.map((section) => [section.title, true])));
+  const [expandedSections, setExpandedSections] = useState(() => Object.fromEntries(menus.map((section) => [section.title, false])));
+
+  const activeSection = sectionForPath(pathname);
 
   useEffect(() => {
     const toggle = () => setOpen((current) => !current);
@@ -50,21 +60,26 @@ export default function Sidebar() {
     return () => window.removeEventListener('astro:toggle-sidebar', toggle);
   }, []);
 
+  useEffect(() => {
+    if (!activeSection) return;
+    setExpandedSections((current) => ({ ...current, [activeSection]: true }));
+  }, [activeSection]);
+
   if (pathname === '/login') return null;
   
   return (
     <aside className={`sidebar ${open ? 'is-open' : ''}`}>
       <nav aria-label="Main navigation" className="py-2 sidebar-menu is-expanded">
-        <a href="/dashboard" className={`sidebar-link ${pathname === '/dashboard' ? 'active' : ''}`}><i className="bi bi-grid-1x2-fill" /> Dashboard</a>
+        <Link href="/dashboard" className={`sidebar-link ${pathname === '/dashboard' ? 'active' : ''}`} onClick={() => setOpen(false)} aria-current={pathname === '/dashboard' ? 'page' : undefined}><i className="bi bi-grid-1x2-fill" /> Dashboard</Link>
 
         {menus.map((section) => (
           <div key={section.title}>
             <button className="sidebar-section-toggle" type="button" onClick={() => setExpandedSections((current) => ({ ...current, [section.title]: !current[section.title] }))} aria-expanded={expandedSections[section.title]}>
-              <span>{section.title}</span><i className={`bi bi-chevron-${expandedSections[section.title] ? 'up' : 'down'}`} />
+              <span><i className={`bi ${section.icon}`} /> {section.title}</span><i className={`bi bi-chevron-${expandedSections[section.title] ? 'up' : 'down'}`} />
             </button>
             <div className={`sidebar-section-items ${expandedSections[section.title] ? 'is-expanded' : 'is-collapsed'}`}>
               {section.items.map(([label, href]) => (
-                <a href={href} className={`sidebar-link ${pathname === href ? 'active' : ''}`} key={href}>{label}</a>
+                <Link href={href} className={`sidebar-link ${pathname === href ? 'active' : ''}`} key={href} onClick={() => setOpen(false)} aria-current={pathname === href ? 'page' : undefined}>{label}</Link>
               ))}
             </div>
           </div>
